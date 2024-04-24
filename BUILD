@@ -8,7 +8,6 @@ pybind_extension(
     srcs = ["clib.cc"],
     deps = [
         "@com_google_absl//absl/status",
-        "@com_google_absl//absl/strings:string_view",
         "@pybind11_abseil//pybind11_abseil:status_casters",
     ],
 )

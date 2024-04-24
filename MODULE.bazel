@@ -1,4 +1,4 @@
-module(name = "odr_issue")
+module(name = "absl_cord_odr_issue")
 
 bazel_dep(name = "abseil-cpp", version = "20230802.0.bcr.1", repo_name = "com_google_absl")
 bazel_dep(name = "pybind11_bazel", version = "2.12.0")
