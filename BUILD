@@ -8,6 +8,7 @@ pybind_extension(
     srcs = ["clib.cc"],
     deps = [
         "@com_google_absl//absl/status",
+        "@com_google_absl//absl/strings:cord",
         "@pybind11_abseil//pybind11_abseil:status_casters",
     ],
 )
@@ -15,6 +16,5 @@ pybind_extension(
 py_binary(
     name = "test",
     srcs = ["test.py"],
-    data = ["@pybind11_abseil//pybind11_abseil:status.so"],
     deps = [":clib"],
 )
