@@ -11,7 +11,10 @@ It appears that the root cause of the problem is that both `//:clib` and `@pybin
 
 `absl::Status` uses `absl::Cord` to store the payload. 
 
-`absl::Cord` has a built-in profiling mechanism that collects samples with a certain frequency. When it collects a sample, it checks for ODR violations.
+`absl::Cord` has a built-in profiling mechanism that collects samples with a certain frequency. When it collects a sample, it checks for ODR violations:
+  * absl/strings/internal/cordz_info.h
+  * `CordzInfo::MaybeTrackCord()`
+  * `CordzInfo::ODRCheck()`
 
 When constructing a status payload in python (i.e. using the `pybind11_abseil` instance of Abseil) and deallocating it in the `clib` pybind extension, there is a small probability that we trigger a sample collection, which subsequently crashes the process. By repeating this process many times, we can reliably cause the crash.
 
