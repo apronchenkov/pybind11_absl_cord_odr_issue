@@ -7,6 +7,7 @@
 namespace {
 
 PYBIND11_MODULE(clib, m) {
+  pybind11::google::ImportStatusModule();
   m.def(
       "erase_payload",
       [](absl::Status* status, std::string url) {
