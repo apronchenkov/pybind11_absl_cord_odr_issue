@@ -1,11 +1,13 @@
-# How to run
+# Illustration of an issue related to ODR violation in pybind11_abseil
+
+## How to run
 
 ```bash
 git clone sso://user/axv/pybind11_absl_cord_odr_issue && cd pybind11_absl_cord_odr_issue && bazel run :test
 # Causes: [cordz_info.h : 223] RAW: Check list_ == &global_list_ failed: ODR violation in Cord
 ```
 
-# A probable explanation
+## A probable explanation
 
 It appears that the root cause of the problem is that both `//:clib` and `@pybind11_abseil//pybind11_abseil:status.so` include statically linked components of Abseil.
 
