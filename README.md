@@ -1,4 +1,4 @@
-# Illustration of an issue related to ODR violation in pybind11_abseil
+# Example of an issue related to ODR violation in pybind11_abseil
 
 ## How to run
 
